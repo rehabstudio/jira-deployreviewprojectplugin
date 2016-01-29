@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.rehabstudio.projecttemplates</groupId>
+    <artifactId>deployandreview</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <organization>
+        <name>rehabstudio</name>
+        <url>https://www.rehabstudio.com/</url>
+    </organization>
+
+    <name>deployandreviewtemplate</name>
+    <description>This plugin allows you to quick create projects facilitating a deployment and review stage.</description>
+    <packaging>atlassian-plugin</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-api</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira.plugins</groupId>
+            <artifactId>project-templates-api</artifactId>
+            <version>${project.templates.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-jira-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${jira.version}</productVersion>
+                    <productDataVersion>${jira.version}</productDataVersion>
+                    <enableFastdev>false</enableFastdev>
+                    
+                    <pluginArtifact>
+                        <groupId>com.atlassian.labs.plugins</groupId>
+                        <artifactId>quickreload</artifactId>
+                        <version>${quick.reload.version}</version>
+                    </pluginArtifact>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <jira.version>7.0.10</jira.version>
+        <amps.version>6.2.1</amps.version>
+        <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
+        <atlassian.spring.scanner.version>1.2.6</atlassian.spring.scanner.version>
+        <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
+		<testkit.version>6.3.11</testkit.version>
+		<project.templates.version>2.42</project.templates.version>
+    </properties>
+
+</project>

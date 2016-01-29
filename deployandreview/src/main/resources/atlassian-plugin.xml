@@ -1,0 +1,47 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="deployandreview"/>
+
+    <web-resource key="deployandreviewtemplate-webresources" name="deployandreviewtemplate Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <transformation extension="soy">
+            <transformer key="soyTransformer"/>
+        </transformation>
+
+        <resource type="download" name="DeployAndReviewTemplate.soy.js" location="/soy/DeployAndReviewTemplate.soy"/>
+
+        <resource type="download" name="images/" location="/images">
+            <param name="content-type" value="image/png; charset=binary"/>
+        </resource>
+
+        <context>atl.general</context>
+        <context>atl.admin</context>
+    </web-resource>
+
+    <project-blueprint key="deployandreviewtemplate-blueprint" weight="90">
+        <label key="deployandreviewtemplate.name"/>
+		<projectTypeKey>business</projectTypeKey>
+        <description key="deployandreviewtemplate.description"/>
+        <longDescription key="deployandreviewtemplate.description.long"/>
+
+        <infoPage soy-template="JIRA.Templates.ProjectTemplates.DeployAndReview.renderTemplateExplanation" />
+
+        <icon location="images/my-template-icon.png"/>
+        <backgroundIcon location="images/my-template-background.png"/>
+
+        <add-project>
+            <!-- <hook class="com.rehabstudio.projecttemplates.DeployReviewProjectHook"/>  -->
+            <descriptor file="/config/deployandreview-template-config.json"/>
+        </add-project>
+    </project-blueprint>
+
+</atlassian-plugin>

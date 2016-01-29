@@ -1,0 +1,5 @@
+.project
+.classpath
+.settings/
+jira-run-pom.xml
+target/

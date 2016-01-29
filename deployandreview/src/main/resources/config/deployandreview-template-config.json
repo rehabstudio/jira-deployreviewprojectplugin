@@ -1,0 +1,36 @@
+{
+    "issue-type-scheme":
+    {
+        "name": "deployandreviewtemplate.issuetype.scheme.name",
+        "description": "deployandreviewtemplate.issuetype.scheme.description",
+        "issue-types": [
+            {
+                "key": "rbhdrFeature",
+                "name": "Feature",
+                "description": "A new feature of the product, which has yet to be developed.",
+                "icon": "/images/icons/newfeature.png",
+                "workflow": "rbhdrWf1"
+            },
+            {
+                "key": "rbhdrBug",
+                "name": "Bug",
+                "description": "A problem which impairs or prevents the functions of the product.",
+                "icon": "/images/icons/bug.png",
+                "workflow": "rbhdrWf1"
+            }
+        ]
+    },
+    "workflow-scheme":
+    {
+        "name": "deployandreviewtemplate.workflow.scheme.name",
+        "description": "deployandreviewtemplate.workflow.scheme.description",
+        "default-workflow": "rbhdrWf1",
+        "workflows": [
+            {
+                "key": "rbhdrWf1",
+                "name": "deployandreviewtemplate.workflow.wf2.name",
+                "workflow-bundle": "/wfb/Deploy-and-Review.jwb"
+            }
+        ]
+    }
+}
